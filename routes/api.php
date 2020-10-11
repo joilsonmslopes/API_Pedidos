@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+# Rotas para Pratos
+Route::prefix('pratos')->group(function() {
+    Route::namespace('Api')->group(function() {
+        Route::get('/', 'PratoController@index');
+        Route::post('/store', 'PratoController@store');
+    });
+});
