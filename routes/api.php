@@ -25,5 +25,7 @@ Route::prefix('pratos')->group(function() {
         Route::post('/store', 'PratoController@store');
 
         Route::put('/{id}', 'PratoController@update');
+
+        Route::delete('/{id}', 'PratoController@destroy');
     });
 });

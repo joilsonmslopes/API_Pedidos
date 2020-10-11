@@ -46,7 +46,20 @@ class PratoController extends Controller
 
             return ['retorno'=>'Prato atualizado com sucesso', 'data'=>$prato];
         } catch (\Exception $error) {
-            return ['retorno'=>'Falha ao atualizar prato', 'details'=>$error];
+            return ['retorno'=>'Falha ao atualizar o prato', 'details'=>$error];
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $prato = Prato::find($id);
+
+            $prato->delete();
+
+            return ['retorno'=>'Prato deletado com sucesso'];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao deletar o prato', 'details'=>$error];
         }
     }
 }
