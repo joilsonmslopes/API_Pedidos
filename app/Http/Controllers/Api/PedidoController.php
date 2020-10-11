@@ -50,4 +50,35 @@ class PedidoController extends Controller
             return ['retorno'=>'Falha ao tentar realizar um pedido', 'details'=>$error];
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $pedido = Pedido::find($id);
+
+            $pedido->cliente = $request->cliente;
+            $pedido->quantidade = $request->quantidade;
+            $pedido->prato_id = $request->prato_id;
+            $pedido->status_id = $request->status_id;
+
+            $pedido->save();
+
+            return ['retorno'=>'Pedido atualizado com sucesso', 'data'=>$pedido];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao tentar editar o pedido', 'details'=>$error];
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $pedido = Pedido::find($id);
+
+            $pedido->delete();
+
+            return ['retorno'=>'Pedido cancelado com sucesso'];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao tentar cancelar o pedido', 'details'=>$error];
+        }
+    }
 }

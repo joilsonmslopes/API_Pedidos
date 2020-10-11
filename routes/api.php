@@ -52,6 +52,9 @@ Route::prefix('pedidos')->group(function() {
         Route::get('/{id}', 'PedidoController@show');
 
         Route::post('/store', 'PedidoController@store');
-        
+
+        Route::put('/{id}', 'PedidoController@update');
+
+        Route::delete('/{id}', 'PedidoController@destroy');
     });
 });
