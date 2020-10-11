@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('pratos')->group(function() {
     Route::namespace('Api')->group(function() {
         Route::get('/', 'PratoController@index');
+
         Route::post('/store', 'PratoController@store');
+
+        Route::put('/{id}', 'PratoController@update');
     });
 });

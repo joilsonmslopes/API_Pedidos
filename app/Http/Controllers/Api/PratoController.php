@@ -29,7 +29,24 @@ class PratoController extends Controller
 
             return ['retorno'=>'Prato cadastrado com sucesso'];
         } catch (\Exception $error) {
-            return ['retorno'=>'Error', 'details'=>$error];
+            return ['retorno'=>'Falha ao cadastrar novo prato', 'details'=>$error];
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $prato = Prato::find($id);
+
+            $prato->nome = $request->nome;
+            $prato->serve_pessoas = $request->serve_pessoas;
+            $prato->valor = $request->valor;
+
+            $prato->save();
+
+            return ['retorno'=>'Prato atualizado com sucesso', 'data'=>$prato];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao atualizar prato', 'details'=>$error];
         }
     }
 }
