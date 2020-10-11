@@ -49,5 +49,9 @@ Route::prefix('status')->group(function() {
 Route::prefix('pedidos')->group(function() {
     Route::namespace('Api')->group(function() {
         Route::get('/', 'PedidoController@index');
+        Route::get('/{id}', 'PedidoController@show');
+
+        Route::post('/store', 'PedidoController@store');
+        
     });
 });
