@@ -38,5 +38,9 @@ Route::prefix('status')->group(function() {
         Route::get('/{id}', 'StatusController@show');
 
         Route::post('/store', 'StatusController@store');
+
+        Route::put('/{id}', 'StatusController@update');
+
+        Route::delete('/{id}', 'StatusController@destroy');
     });
 });

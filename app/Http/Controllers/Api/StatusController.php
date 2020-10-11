@@ -41,4 +41,33 @@ class StatusController extends Controller
             return ['retorno'=>'Falha ao cadastrar', 'details'=>$error];
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $status = Status::find($id);
+
+            $status->nome = $request->nome;
+
+            $status->save();
+
+            return ['retorno'=>'Status atualizado com sucesso', 'data'=>$status];
+
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao tentar atualizar o status', 'details'=>$error];
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $status = Status::find($id);
+
+            $status->delete();
+
+            return ['retorno'=>'Status deletado com sucesso'];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao tentar deletar o status', 'details'=>$error];
+        }
+    }
 }
