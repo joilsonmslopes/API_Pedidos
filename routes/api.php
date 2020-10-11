@@ -30,3 +30,10 @@ Route::prefix('pratos')->group(function() {
         Route::delete('/{id}', 'PratoController@destroy');
     });
 });
+
+# Rotas para Status
+Route::prefix('status')->group(function() {
+    Route::namespace('Api')->group(function() {
+        Route::get('/', 'StatusController@index');
+    });
+});

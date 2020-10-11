@@ -25,7 +25,7 @@ class CreatePedidosTable extends Migration
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')
                 ->references('id')
-                ->on('status')
+                ->on('statuses')
                 ->onDelete('cascade');
         });
     }
