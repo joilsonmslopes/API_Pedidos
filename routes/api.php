@@ -44,3 +44,10 @@ Route::prefix('status')->group(function() {
         Route::delete('/{id}', 'StatusController@destroy');
     });
 });
+
+# Rotas para Pedidos
+Route::prefix('pedidos')->group(function() {
+    Route::namespace('Api')->group(function() {
+        Route::get('/', 'PedidoController@index');
+    });
+});
