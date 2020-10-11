@@ -15,4 +15,30 @@ class StatusController extends Controller
 
         return $status;
     }
+
+    public function show($id)
+    {
+        try {
+            $status = Status::find($id);
+
+            return $status;
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao listar', 'details'=>$error];
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $status = new Status;
+
+            $status->nome = $request->nome;
+
+            $status->save();
+
+            return ['retorno'=>'Status cadastrado com sucesso'];
+        } catch (\Exception $error) {
+            return ['retorno'=>'Falha ao cadastrar', 'details'=>$error];
+        }
+    }
 }

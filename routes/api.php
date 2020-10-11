@@ -35,5 +35,8 @@ Route::prefix('pratos')->group(function() {
 Route::prefix('status')->group(function() {
     Route::namespace('Api')->group(function() {
         Route::get('/', 'StatusController@index');
+        Route::get('/{id}', 'StatusController@show');
+
+        Route::post('/store', 'StatusController@store');
     });
 });
