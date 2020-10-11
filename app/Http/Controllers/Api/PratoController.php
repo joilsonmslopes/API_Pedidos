@@ -16,6 +16,13 @@ class PratoController extends Controller
         return $pratos;
     }
 
+    public function show($id)
+    {
+        $prato = Prato::find($id);
+
+        return $prato;
+    }
+
     public function store(Request $request)
     {
         try {
